@@ -28,7 +28,8 @@ class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     transaction_type = models.CharField(max_length=4, choices=TRANSACTION_TYPES)
-
+    rental_start_date = models.DateField(blank=False, null=True)
+    rental_end_date = models.DateField(blank=False, null=True)
     def __str__(self):
         return f"{self.user.username} - {self.product.name} - {self.transaction_type}"
 

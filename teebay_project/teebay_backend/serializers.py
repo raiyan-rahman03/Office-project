@@ -11,4 +11,13 @@ class ProductSerializer(serializers.ModelSerializer):
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
-        fields = ['id', 'user', 'product', 'transaction_type']
+        fields = "__all__"
+class Buy_TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields= ['id','product']
+class Rent_TransactionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Transaction
+        fields= ['id','product','rental_start_date','rental_end_date']        
