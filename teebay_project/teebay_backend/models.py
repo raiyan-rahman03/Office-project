@@ -18,18 +18,21 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-class Transaction(models.Model):
-    BUY = 'BUY'
-    RENT = 'RENT'
-    TRANSACTION_TYPES = [
-        (BUY, 'Buy'),
-        (RENT, 'Rent'),
-    ]
+class BuyTransaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    transaction_type = models.CharField(max_length=4, choices=TRANSACTION_TYPES)
-    rental_start_date = models.DateField(blank=False, null=True)
-    rental_end_date = models.DateField(blank=False, null=True)
+    transaction_type = models.CharField(max_length=4, default='BUY')
+
+
     def __str__(self):
-        return f"{self.user.username} - {self.product.name} - {self.transaction_type}"
+        return f"{self.user.username} bought {self.product.name}"
+
+class RentTransaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    transaction_type = models.CharField(max_length=4, default='RENT')
+    rent_time =models.DurationField() 
+  
+    def __str__(self):
+        return f"{self.user.username} rented {self.product.name} from {self.rental_start_date} to {self.rental_end_date}"
 

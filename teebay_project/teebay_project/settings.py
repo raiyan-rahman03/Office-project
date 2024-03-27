@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'teebay_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'teebay',
+        'NAME': 'teebay_f',
         'USER': 'root',
         'PASSWORD': 'root123',
         'HOST': 'localhost',   # or your MySQL host
@@ -130,3 +130,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
